@@ -1,0 +1,3 @@
+<?php if ( ! defined( 'ABSPATH' ) ) { exit; } ?>
+<main id="main" class="container inner-page"><header class="archive-heading"><p class="eyebrow"><?php esc_html_e( 'مساحات المعرفة', 'sada-clips' ); ?></p><h1><?php the_archive_title(); ?></h1><?php the_archive_description( '<div class="archive-description">', '</div>' ); ?></header>
+<?php if ( have_posts() ) : ?><div class="card-grid"><?php while ( have_posts() ) : the_post(); get_template_part( 'template-parts/card', sada_card_kind() ); endwhile; ?></div><?php the_posts_pagination( array( 'prev_text' => __( 'السابق', 'sada-clips' ), 'next_text' => __( 'التالي', 'sada-clips' ) ) ); else : ?><p><?php esc_html_e( 'لا يوجد محتوى في هذا القسم بعد.', 'sada-clips' ); ?></p><?php endif; ?></main>

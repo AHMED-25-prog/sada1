@@ -1,0 +1,186 @@
+@font-face {
+  font-family: Aref;
+  src: url("../fonts/aref-ruqaa-arabic-400.woff2") format("woff2");
+  font-weight: 400;
+  font-display: swap;
+}
+@font-face {
+  font-family: Cairo;
+  src: url("../fonts/cairo-arabic-700.woff2") format("woff2");
+  font-weight: 700;
+  font-display: swap;
+}
+@font-face {
+  font-family: Tajawal;
+  src: url("../fonts/tajawal-arabic-400.woff2") format("woff2");
+  font-weight: 400;
+  font-display: swap;
+}
+@font-face {
+  font-family: AmiriQuran;
+  src: url("../fonts/amiri-quran-arabic-400.woff2") format("woff2");
+  font-weight: 400;
+  font-display: swap;
+}
+:root {
+  --c-emerald-900: #0b3b2e;
+  --c-emerald-700: #14624a;
+  --c-emerald-500: #1e8566;
+  --c-gold-500: #c79a3b;
+  --c-gold-300: #e2c27a;
+  --c-sand-50: #fbf7ee;
+  --c-sand-100: #f3ead8;
+  --c-terracotta: #b4673a;
+  --c-ink-900: #2a1f14;
+  --c-ink-600: #6b5b48;
+  --c-gold-text: #7b591c;
+  --fs-body: clamp(1rem, 0.96rem + 0.2vw, 1.125rem);
+  --fs-card: clamp(1.06rem, 1rem + 0.25vw, 1.25rem);
+  --fs-section: clamp(1.5rem, 1.2rem + 1vw, 2.1rem);
+  --fs-hero: clamp(3.5rem, 2rem + 5vw, 7rem);
+  --shadow: 0 12px 32px rgb(75 45 17 / 0.08);
+  --radius: 20px;
+}
+* {
+  box-sizing: border-box;
+}
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 7rem;
+}
+body {
+  margin: 0;
+  background: var(--c-sand-50);
+  color: var(--c-ink-900);
+  font-family: Tajawal, "Segoe UI", Tahoma, Arial, sans-serif;
+  font-size: var(--fs-body);
+  line-height: 1.95;
+  direction: rtl;
+}
+h1,
+h2,
+h3,
+h4,
+button,
+.button,
+.menu {
+  font-family: Cairo, Tahoma, Arial, sans-serif;
+}
+h1,
+h2,
+h3,
+h4 {
+  line-height: 1.65;
+  margin-block: 0 1rem;
+  font-weight: 700;
+}
+h1 {
+  font-size: clamp(2rem, 1.6rem + 1.5vw, 3rem);
+}
+h2 {
+  font-size: var(--fs-section);
+}
+h3 {
+  font-size: var(--fs-card);
+}
+p {
+  margin-block: 0 1rem;
+}
+a {
+  color: var(--c-emerald-700);
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
+  text-underline-offset: 5px;
+}
+button,
+input,
+textarea,
+select {
+  font: inherit;
+}
+button {
+  cursor: pointer;
+}
+button,
+a,
+input,
+textarea,
+select {
+  touch-action: manipulation;
+}
+img,
+video,
+iframe {
+  max-width: 100%;
+}
+img {
+  height: auto;
+  display: block;
+}
+svg.icon {
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+}
+button {
+  color: inherit;
+}
+input,
+textarea,
+select {
+  border: 1px solid #8e7b5d;
+  border-radius: 12px;
+  padding: 0.65rem 0.9rem;
+  background: var(--c-sand-50);
+  color: var(--c-ink-900);
+  min-width: 0;
+}
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible,
+summary:focus-visible {
+  outline: 3px solid var(--c-terracotta);
+  outline-offset: 5px;
+}
+.screen-reader-text,
+.skip-link:not(:focus) {
+  position: absolute;
+  inline-size: 1px;
+  block-size: 1px;
+  padding: 0;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+.skip-link:focus {
+  position: fixed;
+  inset-block-start: 8px;
+  inset-inline-start: 8px;
+  z-index: 1000;
+  background: var(--c-sand-50);
+  padding: 1rem;
+}
+.quran {
+  font-family: AmiriQuran, serif;
+  font-size: 1.5em;
+  line-height: 2.5;
+}
+::selection {
+  background: var(--c-gold-300);
+  color: var(--c-ink-900);
+}
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *:before,
+  *:after {
+    animation: none !important;
+    transition: none !important;
+  }
+}

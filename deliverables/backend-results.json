@@ -1,0 +1,65 @@
+{
+    "versions": {
+        "wordpress": "6.8.3",
+        "php": "8.5.10"
+    },
+    "active_theme": "sada-clips",
+    "types": [
+        true,
+        true,
+        true
+    ],
+    "taxonomy": true,
+    "counts_before": [
+        17,
+        4,
+        4,
+        4,
+        2
+    ],
+    "counts_after": [
+        17,
+        4,
+        4,
+        4,
+        2
+    ],
+    "idempotent": true,
+    "menus": {
+        "primary": 8,
+        "footer": 8
+    },
+    "missing_nonce_rejected": true,
+    "speaker_sanitized": true,
+    "unsafe_url_rejected": true,
+    "video": [
+        {
+            "input": "https:\/\/youtu.be\/abcdefghijk",
+            "has_iframe": false,
+            "consent": true,
+            "native_video": false,
+            "empty": false
+        },
+        {
+            "input": "https:\/\/vimeo.com\/123456",
+            "has_iframe": false,
+            "consent": true,
+            "native_video": false,
+            "empty": false
+        },
+        {
+            "input": "https:\/\/example.org\/test.mp4",
+            "has_iframe": false,
+            "consent": false,
+            "native_video": true,
+            "empty": false
+        },
+        {
+            "input": "javascript:alert(1)",
+            "has_iframe": false,
+            "consent": false,
+            "native_video": false,
+            "empty": true
+        }
+    ]
+}

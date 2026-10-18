@@ -1,0 +1,256 @@
+{
+  "results": [
+    {
+      "width": 360,
+      "scrollWidth": 360,
+      "sections": [
+        "مركزية القرآن",
+        "قرآنيات",
+        "حائط",
+        "تأملات",
+        "الكتب",
+        "البرامج"
+      ],
+      "cardCount": 24,
+      "columns": "328px",
+      "fonts": [
+        {
+          "family": "Aref",
+          "status": "loaded"
+        },
+        {
+          "family": "Cairo",
+          "status": "loaded"
+        },
+        {
+          "family": "Tajawal",
+          "status": "loaded"
+        },
+        {
+          "family": "AmiriQuran",
+          "status": "unloaded"
+        }
+      ]
+    },
+    {
+      "width": 768,
+      "scrollWidth": 768,
+      "sections": [
+        "مركزية القرآن",
+        "قرآنيات",
+        "حائط",
+        "تأملات",
+        "الكتب",
+        "البرامج"
+      ],
+      "cardCount": 24,
+      "columns": "349px 349px",
+      "fonts": [
+        {
+          "family": "Aref",
+          "status": "loaded"
+        },
+        {
+          "family": "Cairo",
+          "status": "loaded"
+        },
+        {
+          "family": "Tajawal",
+          "status": "loaded"
+        },
+        {
+          "family": "AmiriQuran",
+          "status": "loaded"
+        }
+      ]
+    },
+    {
+      "width": 1280,
+      "scrollWidth": 1280,
+      "sections": [
+        "مركزية القرآن",
+        "قرآنيات",
+        "حائط",
+        "تأملات",
+        "الكتب",
+        "البرامج"
+      ],
+      "cardCount": 24,
+      "columns": "291.5px 291.5px 291.5px 291.5px",
+      "fonts": [
+        {
+          "family": "Aref",
+          "status": "loaded"
+        },
+        {
+          "family": "Cairo",
+          "status": "loaded"
+        },
+        {
+          "family": "Tajawal",
+          "status": "loaded"
+        },
+        {
+          "family": "AmiriQuran",
+          "status": "loaded"
+        }
+      ]
+    },
+    {
+      "width": 1440,
+      "scrollWidth": 1440,
+      "sections": [
+        "مركزية القرآن",
+        "قرآنيات",
+        "حائط",
+        "تأملات",
+        "الكتب",
+        "البرامج"
+      ],
+      "cardCount": 24,
+      "columns": "293.5px 293.5px 293.5px 293.5px",
+      "fonts": [
+        {
+          "family": "Aref",
+          "status": "loaded"
+        },
+        {
+          "family": "Cairo",
+          "status": "loaded"
+        },
+        {
+          "family": "Tajawal",
+          "status": "loaded"
+        },
+        {
+          "family": "AmiriQuran",
+          "status": "loaded"
+        }
+      ]
+    },
+    {
+      "width": 1920,
+      "scrollWidth": 1920,
+      "sections": [
+        "مركزية القرآن",
+        "قرآنيات",
+        "حائط",
+        "تأملات",
+        "الكتب",
+        "البرامج"
+      ],
+      "cardCount": 24,
+      "columns": "333.5px 333.5px 333.5px 333.5px",
+      "fonts": [
+        {
+          "family": "Aref",
+          "status": "loaded"
+        },
+        {
+          "family": "Cairo",
+          "status": "loaded"
+        },
+        {
+          "family": "Tajawal",
+          "status": "loaded"
+        },
+        {
+          "family": "AmiriQuran",
+          "status": "loaded"
+        }
+      ]
+    },
+    {
+      "mobileMenu": true
+    },
+    {
+      "mobileMenuClosed": true
+    },
+    {
+      "searchDialog": true,
+      "searchFocus": true
+    },
+    {
+      "searchClosed": true
+    },
+    {
+      "url": "/program/",
+      "status": 200,
+      "title": "البرامج",
+      "phpErrors": false,
+      "overflow": false
+    },
+    {
+      "url": "/clip/",
+      "status": 200,
+      "title": "المقاطع",
+      "phpErrors": false,
+      "overflow": false
+    },
+    {
+      "url": "/reflection/",
+      "status": 200,
+      "title": "التأملات",
+      "phpErrors": false,
+      "overflow": false
+    },
+    {
+      "url": "/?s=المعنى",
+      "status": 200,
+      "title": "نتائج البحث عن: المعنى",
+      "phpErrors": false,
+      "overflow": false
+    },
+    {
+      "url": "/?s=zzzxxyy",
+      "status": 200,
+      "title": "نتائج البحث عن: zzzxxyy",
+      "phpErrors": false,
+      "overflow": false
+    },
+    {
+      "url": "/not-a-real-page/",
+      "status": 404,
+      "title": "لعلّ الطريق إلى المعنى يبدأ من هنا",
+      "phpErrors": false,
+      "overflow": false
+    },
+    {
+      "url": "/about-sada/",
+      "status": 200,
+      "title": "السيرة الذاتية",
+      "phpErrors": false,
+      "overflow": false
+    },
+    {
+      "url": "/sada-demo-quran-0/",
+      "status": 200,
+      "title": "حين تصبح القراءة صحبة — تجريبي",
+      "phpErrors": false,
+      "overflow": false
+    },
+    {
+      "url": "/program/sada-demo-programs-0/",
+      "status": 200,
+      "title": "نوافذ للتدبر — تجريبي",
+      "phpErrors": false,
+      "overflow": false
+    },
+    {
+      "url": "/clip/sada-demo-clip-0/",
+      "status": 200,
+      "title": "وقفة مع المعنى — مقطع تجريبي 1",
+      "phpErrors": false,
+      "overflow": false
+    },
+    {
+      "url": "/reflection/sada-demo-reflections-0/",
+      "status": 200,
+      "title": "ما الذي تعلّمنا إياه البدايات؟ — تجريبي",
+      "phpErrors": false,
+      "overflow": false
+    }
+  ],
+  "errors": [],
+  "requests": []
+}

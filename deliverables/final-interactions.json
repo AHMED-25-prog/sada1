@@ -1,0 +1,25 @@
+{
+  "fonts": [
+    {
+      "family": "Aref",
+      "status": "loaded"
+    },
+    {
+      "family": "Cairo",
+      "status": "loaded"
+    },
+    {
+      "family": "Tajawal",
+      "status": "loaded"
+    },
+    {
+      "family": "AmiriQuran",
+      "status": "loaded"
+    }
+  ],
+  "openMenuViolations": [],
+  "dialogViolations": [],
+  "focusRestored": true,
+  "reducedMotion": true,
+  "videoConsent": true
+}
