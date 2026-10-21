@@ -1,118 +1,34 @@
 <?php get_header(); ?>
 <main id="main">
 <section class="hero" aria-labelledby="hero-title"><div class="hero-art" aria-hidden="true"></div><div class="container hero-content">
-<p class="eyebrow"><?php esc_html_e( 'معرفة تُنير القلب', 'sada-clips' ); ?></p>
-<h1 id="hero-title"><?php echo esc_html( get_theme_mod( 'sada_hero_title', __( 'صدى كليبز', 'sada-clips' ) ) ); ?></h1>
-<p class="hero-tagline"><?php echo esc_html( get_theme_mod( 'sada_tagline', __( 'من لحظة تأمّل، يبدأ أثرٌ يبقى.', 'sada-clips' ) ) ); ?></p>
+<h1 id="hero-title"><?php echo esc_html( sada_client_text( 'hero_title' ) ); ?></h1>
 </div></section>
-<?php
-// Keep this query local to the floating card; the section queries below are unchanged.
-$sada_intro_args = array(
-    'post_type'           => 'reflection',
-    'post_status'         => 'publish',
-    'posts_per_page'      => 5,
-    'orderby'            => array( 'date' => 'DESC', 'ID' => 'DESC' ),
-    'ignore_sticky_posts' => true,
-    'no_found_rows'       => true,
-    'has_password'       => false,
-);
-$sada_intro_query = new WP_Query( $sada_intro_args );
-if ( ! $sada_intro_query->have_posts() ) {
-    $sada_intro_args['post_type'] = 'post';
-    $sada_intro_query = new WP_Query( $sada_intro_args );
-}
-$sada_intro_slides = array();
-while ( $sada_intro_query->have_posts() ) {
-    $sada_intro_query->the_post();
-    $sada_intro_slides[] = array(
-        'subtitle' => __( 'أهلًا بك في مساحة المعنى', 'sada-clips' ),
-        'title'    => get_the_title(),
-        'text'     => wp_trim_words( wp_strip_all_tags( get_the_excerpt(), true ), 28, '…' ),
-        'url'      => get_permalink(),
-    );
-}
-wp_reset_postdata();
-$sada_intro_has_posts = ! empty( $sada_intro_slides );
-if ( ! $sada_intro_has_posts ) {
-    $sada_intro_slides[] = array(
-        'subtitle' => __( 'أهلًا بك في مساحة المعنى', 'sada-clips' ),
-        'title'    => __( 'خطوة هادئة نحو معرفة أعمق', 'sada-clips' ),
-        'text'     => get_theme_mod( 'sada_intro', __( 'مقاطع قصيرة، وقراءات وتأملات تجمع نور المعرفة وجمال السؤال، في مساحة عربية قريبة منك.', 'sada-clips' ) ),
-        'url'      => get_theme_mod( 'sada_intro_url', home_url( '/#quran' ) ),
-    );
-}
-?>
-<div class="container">
-<aside class="intro-card" id="intro" aria-labelledby="intro-title">
-    <div class="intro-mark" aria-hidden="true"><?php echo sada_icon( 'book' ); ?></div>
-    <div class="intro-carousel" aria-live="off">
-        <?php foreach ( $sada_intro_slides as $sada_intro_index => $sada_intro_slide ) : ?>
-        <div class="intro-slide<?php echo $sada_intro_index === 0 ? ' is-active' : ''; ?>" data-url="<?php echo esc_url( $sada_intro_slide['url'] ); ?>"<?php if ( $sada_intro_index !== 0 ) : ?> aria-hidden="true" inert<?php endif; ?>>
-            <p class="eyebrow"><?php echo esc_html( $sada_intro_slide['subtitle'] ); ?></p>
-            <h2<?php if ( $sada_intro_index === 0 ) : ?> id="intro-title"<?php endif; ?>><?php echo esc_html( $sada_intro_slide['title'] ); ?></h2>
-            <p><?php echo esc_html( $sada_intro_slide['text'] ); ?></p>
-        </div>
-        <?php endforeach; ?>
-    </div>
-    <a class="button button-outline" data-intro-link href="<?php echo esc_url( $sada_intro_slides[0]['url'] ); ?>"><?php $sada_intro_has_posts ? esc_html_e( 'قراءة المزيد', 'sada-clips' ) : esc_html_e( 'اكتشف المنصة', 'sada-clips' ); ?><span aria-hidden="true">←</span></a>
-</aside>
-<style>
-/* Internal slides share one grid cell, reserving the tallest slide at every width.
-   The existing .intro-card and .intro-mark rules remain untouched. */
-#intro .intro-carousel {
-    display: grid;
-    min-inline-size: 0;
-}
-#intro .intro-slide {
-    grid-area: 1 / 1;
-    min-inline-size: 0;
-    overflow-wrap: anywhere;
-    visibility: hidden;
-    opacity: 0;
-    transition: opacity 400ms ease, visibility 0s 400ms;
-}
-#intro .intro-slide.is-active {
-    visibility: visible;
-    opacity: 1;
-    transition-delay: 0s;
-}
-@media (prefers-reduced-motion: reduce) {
-    #intro .intro-slide { transition: none; }
-}
-</style>
-<script>
-(() => {
-    'use strict';
-    const card = document.getElementById('intro');
-    const slides = card ? [...card.querySelectorAll('.intro-slide')] : [];
-    const link = card?.querySelector('[data-intro-link]');
-    if (slides.length < 2 || !link) return;
-    let index = 0;
-    // Rotation intentionally continues on hover and focus. No motion for reduced-motion users.
-    window.setInterval(() => {
-        const previous = slides[index];
-        previous.classList.remove('is-active');
-        previous.setAttribute('aria-hidden', 'true');
-        previous.inert = true;
-        previous.querySelector('h2').removeAttribute('id');
-        index = (index + 1) % slides.length;
-        const next = slides[index];
-        next.removeAttribute('aria-hidden');
-        next.inert = false;
-        next.querySelector('h2').id = 'intro-title';
-        next.classList.add('is-active');
-        link.href = next.dataset.url;
-    }, 4500);
-})();
-</script>
-</div>
-<?php foreach ( sada_sections() as $key => $section ) :
-    $query_args = array( 'post_type' => $section['type'], 'posts_per_page' => 4, 'post_status' => 'publish', 'no_found_rows' => true, 'ignore_sticky_posts' => true );
-    if ( isset( $section['category'] ) ) { $query_args['category_name'] = $section['category']; }
-    $items = new WP_Query( $query_args ); ?>
-<section class="content-section section-<?php echo esc_attr( $key ); ?>" id="<?php echo esc_attr( $key ); ?>" aria-labelledby="title-<?php echo esc_attr( $key ); ?>"><div class="container">
-<div class="section-heading"><div class="section-title"><span class="section-icon"><?php echo sada_icon( $section['icon'] ); ?></span><h2 id="title-<?php echo esc_attr( $key ); ?>"><?php echo esc_html( $section['title'] ); ?></h2></div><a class="button button-outline view-all" href="<?php echo esc_url( sada_section_url( $section ) ); ?>" aria-label="<?php echo esc_attr( sprintf( __( 'عرض الكل: %s', 'sada-clips' ), $section['title'] ) ); ?>"><?php esc_html_e( 'عرض الكل', 'sada-clips' ); ?><span aria-hidden="true">←</span></a></div>
-<?php if ( $items->have_posts() ) : ?><div class="card-grid"><?php while ( $items->have_posts() ) : $items->the_post(); get_template_part( 'template-parts/card', $section['card'], $section ); endwhile; ?></div>
-<?php else : ?><div class="empty-state"><p><?php esc_html_e( 'هنا تبدأ مساحة جديدة للمعرفة. سيظهر المحتوى عند نشره.', 'sada-clips' ); ?></p><?php if ( current_user_can( 'manage_options' ) ) : ?><a class="button" href="<?php echo esc_url( admin_url( 'themes.php?page=sada-samples' ) ); ?>"><?php esc_html_e( 'إضافة المحتوى التجريبي', 'sada-clips' ); ?></a><?php endif; ?></div><?php endif; wp_reset_postdata(); ?>
-</div></section><?php endforeach; ?>
+<?php $sada_intro = sada_client_text( 'intro' ); if ( $sada_intro !== '' ) : ?>
+<div class="container"><aside class="intro-card" id="intro" aria-label="<?php echo esc_attr( sada_client_text( 'hero_title' ) ); ?>"><div class="intro-mark" aria-hidden="true"><?php echo sada_icon( 'book' ); ?></div><div><p class="client-copy"><?php echo esc_html( $sada_intro ); ?></p></div><a class="button button-outline" href="#services"><?php echo esc_html( sada_client_text( 'nav_services' ) ); ?><span aria-hidden="true">←</span></a></aside></div>
+<?php endif; ?>
+<section class="content-section" id="why" aria-labelledby="title-why"><div class="container">
+<?php sada_client_heading( 'why', 'question' ); ?>
+<?php foreach ( array( 'problem' => 'warning', 'hope' => 'lamp', 'solution' => 'key' ) as $sada_group => $sada_icon ) : ?>
+<div class="client-reason-group"><h3 class="client-pill"><?php echo sada_client_icon( $sada_icon ); ?><span><?php echo esc_html( sada_client_text( $sada_group . '_label' ) ); ?></span></h3><div class="card-grid client-pair">
+<?php for ( $sada_i = 1; $sada_i <= 2; $sada_i++ ) { get_template_part( 'template-parts/card', 'client', array( 'title' => sada_client_text( $sada_group . '_' . $sada_i . '_title' ), 'text' => sada_client_text( $sada_group . '_' . $sada_i . '_text' ) ) ); } ?>
+</div></div><?php endforeach; ?>
+</div></section>
+<section class="content-section" id="services" aria-labelledby="title-services"><div class="container">
+<?php sada_client_heading( 'services', 'document-search' ); ?><div class="card-grid">
+<?php foreach ( array( 'document-search', 'film', 'text-bubble', 'network', 'chart' ) as $sada_i => $sada_icon ) { $sada_key = 'service_' . ( $sada_i + 1 ); get_template_part( 'template-parts/card', 'client', array( 'title' => sada_client_text( $sada_key . '_title' ), 'text' => sada_client_text( $sada_key . '_text' ), 'number' => $sada_i + 1, 'icon' => $sada_icon, 'pill' => true ) ); } ?>
+</div></div></section>
+<section class="content-section" id="benefits" aria-labelledby="title-benefits"><div class="container">
+<?php sada_client_heading( 'benefits', 'shield' ); ?><div class="client-benefits"><div class="card-grid">
+<?php foreach ( array( 'shield', 'star', 'megaphone', 'book-crescent' ) as $sada_i => $sada_icon ) { $sada_key = 'benefit_' . ( $sada_i + 1 ); get_template_part( 'template-parts/card', 'client', array( 'title' => sada_client_text( $sada_key . '_title' ), 'text' => sada_client_text( $sada_key . '_text' ), 'icon' => $sada_icon ) ); } ?>
+</div></div></div></section>
+<section class="content-section client-partnership" id="partnership" aria-labelledby="title-partnership"><div class="container">
+<?php sada_client_heading( 'partnership', 'heart-hands' ); ?><p class="eyebrow client-copy"><?php echo esc_html( sada_client_text( 'partnership_subline' ) ); ?></p>
+<?php foreach ( array( 'heart-hands', 'infinity', 'coin' ) as $sada_i => $sada_icon ) : $sada_text = sada_client_text( 'partnership_' . ( $sada_i + 1 ) ); if ( $sada_text === '' ) { continue; } ?>
+<p class="client-statement"><?php echo sada_client_icon( $sada_icon ); ?><span class="client-copy"><?php echo esc_html( $sada_text ); ?></span></p>
+<?php endforeach; ?>
+</div></section>
+<section class="content-section" id="contact" aria-label="<?php echo esc_attr( sada_client_text( 'nav_contact' ) ); ?>"><div class="container">
+<article class="card client-closing"><div class="card-body"><p class="client-copy"><?php echo esc_html( sada_client_text( 'closing' ) ); ?></p></div></article>
+<div class="client-contact-action"><?php sada_whatsapp_button(); ?></div>
+</div></section>
 </main><?php get_footer(); ?>

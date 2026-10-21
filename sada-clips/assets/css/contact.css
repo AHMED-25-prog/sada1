@@ -1,0 +1,73 @@
+/* Additive contact styles: existing theme tokens and button rules remain unchanged. */
+.sada-whatsapp-floating {
+  position: fixed;
+  left: max(20px, env(safe-area-inset-left));
+  bottom: max(20px, env(safe-area-inset-bottom));
+  z-index: 150;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  inline-size: 56px;
+  block-size: 56px;
+  border: 1px solid var(--c-emerald-700);
+  border-radius: 50%;
+  background: var(--c-emerald-700);
+  color: var(--c-sand-50);
+  box-shadow: var(--shadow);
+  text-decoration: none;
+}
+.sada-whatsapp-floating:hover,
+.sada-whatsapp-floating:focus-visible {
+  background: var(--c-emerald-900);
+  color: var(--c-sand-50);
+  text-decoration: none;
+}
+.sada-whatsapp-floating > .icon {
+  inline-size: 30px;
+  block-size: 30px;
+}
+.sada-whatsapp-floating::before {
+  content: "";
+  position: absolute;
+  inset: -5px;
+  border: 2px solid var(--c-emerald-700);
+  border-radius: inherit;
+  opacity: 0;
+  pointer-events: none;
+  animation: sada-whatsapp-pulse 3.2s ease-out infinite;
+}
+.sada-whatsapp-tooltip {
+  position: absolute;
+  left: calc(100% + 12px);
+  bottom: 4px;
+  inline-size: max-content;
+  max-inline-size: min(260px, calc(100vw - 104px));
+  padding: 0.45rem 0.75rem;
+  border-radius: 10px;
+  background: var(--c-emerald-900);
+  color: var(--c-sand-50);
+  font-size: 0.85rem;
+  line-height: 1.7;
+  text-align: start;
+  visibility: hidden;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 180ms ease, visibility 180ms ease;
+}
+.sada-whatsapp-floating:hover .sada-whatsapp-tooltip,
+.sada-whatsapp-floating:focus-visible .sada-whatsapp-tooltip {
+  visibility: visible;
+  opacity: 1;
+}
+.sada-whatsapp-inline {
+  max-inline-size: 100%;
+}
+@keyframes sada-whatsapp-pulse {
+  0%, 55% { transform: scale(1); opacity: 0; }
+  60% { transform: scale(1); opacity: 0.35; }
+  100% { transform: scale(1.25); opacity: 0; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .sada-whatsapp-floating::before { animation: none; }
+  .sada-whatsapp-tooltip { transition: none; }
+}

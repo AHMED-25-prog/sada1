@@ -20,14 +20,7 @@ function sada_brand() {
     echo '<a class="brand" href="' . esc_url( home_url( '/' ) ) . '">' . sada_icon( 'star' ) . '<span>' . esc_html__( 'صدى كليبز', 'sada-clips' ) . '</span></a>';
 }
 function sada_fallback_menu() {
-    echo '<ul class="menu">';
-    echo '<li><a href="' . esc_url( home_url( '/' ) ) . '">' . esc_html__( 'الرئيسية', 'sada-clips' ) . '</a></li>';
-    $about = get_page_by_path( 'about-sada' );
-    echo '<li><a href="' . esc_url( $about ? get_permalink( $about ) : home_url( '/#intro' ) ) . '">' . esc_html__( 'السيرة الذاتية', 'sada-clips' ) . '</a></li>';
-    foreach ( sada_sections() as $key => $section ) {
-        echo '<li><a href="' . esc_url( home_url( '/#' . $key ) ) . '">' . esc_html( $section['title'] ) . '</a></li>';
-    }
-    echo '</ul>';
+    echo '<ul class="menu">' . sada_client_navigation() . '</ul>';
 }
 function sada_sections() {
     return array(

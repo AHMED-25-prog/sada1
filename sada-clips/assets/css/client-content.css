@@ -1,0 +1,48 @@
+/* Additions required by the client content; existing identity and components stay intact. */
+:root {
+  --c-navy-900: #12305A;
+  --c-amber-500: #E39A3F;
+}
+.client-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: .5rem;
+  padding: .2rem .8rem;
+  border-radius: 999px;
+  background: var(--c-navy-900);
+  color: var(--c-amber-500);
+}
+.client-service-number {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  inline-size: 2.5rem;
+  block-size: 2.5rem;
+  border-radius: 50%;
+  background: var(--c-amber-500);
+  color: var(--c-navy-900);
+}
+.client-pair { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.client-reason-group + .client-reason-group { margin-block-start: 2rem; }
+.client-benefits {
+  border: 1px solid #ddd5c3;
+  border-radius: var(--radius);
+  padding: 1.25rem;
+}
+.client-copy { white-space: pre-line; }
+.client-partnership { text-align: center; }
+.client-partnership .section-heading { justify-content: center; }
+.client-statement {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: .8rem;
+}
+.client-closing {
+  background: var(--c-navy-900);
+  color: var(--c-gold-300);
+}
+.client-contact-action { margin-block-start: 2rem; text-align: center; }
+@media (max-width: 600px) {
+  .client-pair { grid-template-columns: 1fr; }
+}

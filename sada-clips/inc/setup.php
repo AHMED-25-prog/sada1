@@ -16,6 +16,8 @@ add_action( 'wp_enqueue_scripts', function () {
     foreach ( array( 'base', 'layout', 'components' ) as $name ) {
         wp_enqueue_style( 'sada-' . $name, get_theme_file_uri( '/assets/css/' . $name . '.css' ), array(), '1.0.0' );
     }
+    wp_enqueue_style( 'sada-client-content', get_theme_file_uri( '/assets/css/client-content.css' ), array( 'sada-components' ), '1.1.0' );
+    wp_enqueue_style( 'sada-contact', get_theme_file_uri( '/assets/css/contact.css' ), array( 'sada-client-content' ), '1.1.0' );
     wp_enqueue_script( 'sada-ui', get_theme_file_uri( '/assets/js/main.js' ), array(), '1.0.0', true );
     wp_localize_script( 'sada-ui', 'sadaMessages', array(
         'copied' => __( 'تم نسخ الرابط', 'sada-clips' ),
